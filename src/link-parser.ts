@@ -1,20 +1,18 @@
-import * as yargs from 'yargs';
 import * as ogs from 'open-graph-scraper';
 
-function parseLink() {
-    const argv = yargs.options({
-        link: {
-            demand: true,
-            alias: 'l',
-            describe: 'set link that should be parsed',
-            string: true
+export class LinkParser {
+
+  constructor(private link) {
+  }
+
+  public parseLink(): Promise<any> {
+    return new Promise((resolve, reject) =>
+      ogs({'url': this.link}, (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
         }
-    }).argv;
-
-    ogs({'url': argv.link}, (error, results) => {
-        console.error('error:', error);
-        console.log('results:', results);
-    });
+      }));
+  }
 }
-
-parseLink();

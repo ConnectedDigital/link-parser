@@ -2,8 +2,10 @@
   "name": "link-parser",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "start:console": "node ./dist/main.js -l",
+    "tsc": "node ./node_modules/typescript/bin/tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
